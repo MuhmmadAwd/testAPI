@@ -2,7 +2,9 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import MyCard from "./MyCard";
+
+import MyCard from "../component/MyCard";
+
 export default function Posts() {
   const [posts, setPosts] = useState([]);
 
@@ -25,9 +27,7 @@ export default function Posts() {
     <Container>
       <Row>
         {posts && posts.map((text) => (
-          
             <MyCard text={text} key={text.id} />
-            
         ))}
       </Row>
       {/* add new card form */}

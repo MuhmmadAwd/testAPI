@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import "./App.css";
-import Posts from "./component/Posts";
-import MyPost from "./component/MyPost";
+import Posts from "./pages/Posts";
+import MyPost from "./pages/MyPost";
 
 export default function App() {
   // const [title, setTitle] = useState("ahmed");

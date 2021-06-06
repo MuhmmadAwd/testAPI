@@ -12,16 +12,16 @@ export default function MyCard({text}) {
         <>
           {remove && 
             <Col md={4} key={text.id}>
-            <Card>
+            <Card className="m-2" >
               <Card.Img
                 variant="top"
                 src="https://picsum.photos/300/300?random=1"
               />
               <Card.Body>
                 <Card.Title>{text.title}</Card.Title>
-                <Button onClick={handleRemove} className="mx-4" variant="danger">Remove{remove}</Button>
-                <Button className="mx-4" variant="primary">
-                  <Link className="text-white" to={`/post/${text.id}`}>Post</Link>
+                <Button onClick={handleRemove} className=" ml-5" variant="danger">Remove{remove}</Button>
+                <Button className="ml-2" variant="primary">
+                  <Link className="text-white" to={`/post/${text.id}`}>Read more</Link>
                 </Button>
               </Card.Body>
             </Card>
