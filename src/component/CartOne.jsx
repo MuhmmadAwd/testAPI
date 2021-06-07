@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { Button, Col,Card } from "react-bootstrap";
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToCart } from '../ActionCreator/getPosts';
-
-
-
- function MyCard({text,addToCart}) {
+export default function CartOne({text}) {
   const [remove, setRemove] = useState(true)
 
   const handleRemove =()=>{
@@ -24,7 +19,9 @@ import { addToCart } from '../ActionCreator/getPosts';
               <Card.Body>
                 <Card.Title>{text.title}</Card.Title>
                 <Button onClick={handleRemove} className=" ml-5" variant="danger">Remove{remove}</Button>
-                <Button onClick={() => addToCart(text.id)} className="ml-2" variant="primary"> add to Cart</Button>
+                <Button className="ml-2" variant="primary">
+                  <Link className="text-white" to={`/post/${text.id}`}>Read more</Link>
+                </Button>
               </Card.Body>
             </Card>
           </Col>
@@ -32,11 +29,3 @@ import { addToCart } from '../ActionCreator/getPosts';
         </>
     )
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addToCart : (id)=> dispatch(addToCart(id))
-  }
-}
-
-export default connect(null,mapDispatchToProps)(MyCard)
