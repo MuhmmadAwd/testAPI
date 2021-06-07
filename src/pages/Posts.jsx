@@ -1,37 +1,29 @@
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
+import { connect } from "react-redux";
+import { getPosts } from "../ActionCreator/getPosts";
 
 import MyCard from "../component/MyCard";
 
-export default function Posts() {
-  const [posts, setPosts] = useState([]);
-
-  const getPost = async () => {
-    await axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
+ function Posts(props) {
   useEffect(() => {
-    getPost();
+    props.getPosts();
   }, []);
 
   return (
     <Container>
       <Row>
-        {posts && posts.map((text) => (
+        {props.posts.map((text) => (
             <MyCard text={text} key={text.id} />
         ))}
       </Row>
-      {/* add new card form */}
     </Container>
   );
 }
 
+function stateToProps(state){
+  return{posts:state.posts}
+}
+
+export default connect (stateToProps,{getPosts})(Posts)
